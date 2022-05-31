@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-public class ChuckNorrisJokeServiceTest {
+public class ChuckNorrisJokeGeneratorTest {
 
     private static ChuckNorrisQuotes jokeGenerator;
 
