@@ -1,25 +1,25 @@
 package com.cac.labs.chucknorris;
 
+import com.cac.labs.chucknorris.domain.ChuckNorrisJokeGenerator;
 import com.cac.labs.chucknorris.services.ChuckNorrisJokeService;
 import com.cac.labs.chucknorris.services.JokeService;
-import guru.springframework.norris.chuck.ChuckNorrisQuotes;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class ChuckNorrisJokeGeneratorTest {
 
-    private static ChuckNorrisQuotes jokeGenerator;
+    private static ChuckNorrisJokeGenerator jokeGenerator;
 
     @BeforeAll
     public static void init() {
-        jokeGenerator = new ChuckNorrisQuotes();
+        jokeGenerator = new ChuckNorrisJokeGenerator();
     }
 
     @Test
     public void jokeIsNotNull() {
         JokeService jokeService = new ChuckNorrisJokeService(jokeGenerator);
-        String joke = jokeService.generateJoke();
+        String joke = jokeService.getJoke();
 
         Assertions.assertNotNull(joke);
     }
@@ -27,7 +27,7 @@ public class ChuckNorrisJokeGeneratorTest {
     @Test
     public void jokeIsNotBlank() {
         JokeService jokeService = new ChuckNorrisJokeService(jokeGenerator);
-        String joke = jokeService.generateJoke();
+        String joke = jokeService.getJoke();
 
         Assertions.assertFalse(joke.isBlank());
     }
@@ -35,9 +35,9 @@ public class ChuckNorrisJokeGeneratorTest {
     @Test
     public void jokesAreNotEqualMoreThanThreeTimes() {
         JokeService jokeService = new ChuckNorrisJokeService(jokeGenerator);
-        String joke1 = jokeService.generateJoke();
-        String joke2 = jokeService.generateJoke();
-        String joke3 = jokeService.generateJoke();
+        String joke1 = jokeService.getJoke();
+        String joke2 = jokeService.getJoke();
+        String joke3 = jokeService.getJoke();
 
         Assertions.assertFalse(joke1.equals(joke2) && joke2.equals(joke3));
     }
