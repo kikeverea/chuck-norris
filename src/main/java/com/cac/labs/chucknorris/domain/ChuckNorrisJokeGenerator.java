@@ -6,7 +6,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class ChuckNorrisJokeGenerator implements JokeGenerator {
 
-    private final ChuckNorrisQuotes jokeGenerator = new ChuckNorrisQuotes();
+    private final ChuckNorrisQuotes jokeGenerator;
+
+    public ChuckNorrisJokeGenerator(ChuckNorrisQuotes jokeGenerator) {
+        this.jokeGenerator = jokeGenerator;
+    }
 
     @Override
     public String generateJoke() {
